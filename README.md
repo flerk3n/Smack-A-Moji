@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="new.png" alt="Smack-a-Moji App Icon" width="128" height="128" />
+  <img src="icon.png" alt="Smack-a-Moji App Icon" width="128" height="128" />
   
   # 🎉 Smack-a-Moji 🎯
   
@@ -193,10 +193,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you encounter any issues or have questions:
 - 🐛 Report bugs via GitHub Issues
 - 💡 Suggest features via GitHub Discussions
-- 📧 Contact: [Your Email]
+- 📧 Contact: harshrj.dev@gmail.com
 
 ---
 
-**Made with ❤️ and lots of ☕ by [Your Name]**
+**Made with ❤️ and lots of ☕ by Harsh**
 
 *Ready to smack some moji? Let's play! 🎯* 
