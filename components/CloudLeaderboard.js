@@ -247,7 +247,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
     color: '#FF6B6B',
     flex: 1,
     textAlign: 'center',
@@ -263,7 +264,8 @@ const styles = StyleSheet.create({
   closeText: {
     fontSize: 20,
     color: '#FF6B6B',
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
   },
   tabContainer: {
     flexDirection: 'row',
@@ -287,13 +289,14 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   tabText: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#666',
     fontSize: 13,
   },
   activeTabText: {
     color: '#FF6B6B',
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
   },
   loadingContainer: {
     alignItems: 'center',
@@ -302,7 +305,7 @@ const styles = StyleSheet.create({
   loadingText: {
     marginTop: 15,
     fontSize: 16,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#666',
   },
   scoresList: {
@@ -324,7 +327,7 @@ const styles = StyleSheet.create({
   noScores: {
     textAlign: 'center',
     fontSize: 16,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#666',
     lineHeight: 24,
   },
@@ -352,7 +355,8 @@ const styles = StyleSheet.create({
   },
   rank: {
     fontSize: 16,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
     color: '#333',
   },
   topRank: {
@@ -364,22 +368,24 @@ const styles = StyleSheet.create({
   },
   playerName: {
     fontSize: 16,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#333',
   },
   currentPlayerName: {
     color: 'white',
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
   },
   scoreDate: {
     fontSize: 12,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#666',
     marginTop: 2,
   },
   playerScore: {
     fontSize: 18,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
     color: '#FF6B6B',
   },
   currentPlayerScore: {
@@ -403,6 +409,7 @@ const styles = StyleSheet.create({
   refreshText: {
     color: 'white',
     fontSize: 16,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
   },
 }); 

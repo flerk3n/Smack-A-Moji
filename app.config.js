@@ -4,12 +4,15 @@ export default {
     slug: "smack-a-moji",
     version: "1.0.0",
     orientation: "portrait",
-    icon: "./new.png",
+    icon: "./assets/icon.png",
     userInterfaceStyle: "light",
     newArchEnabled: true,
     description: "The ultimate whack-a-mole game with animated emojis! Test your reflexes and compete on global leaderboards.",
     keywords: ["game", "whack-a-mole", "emoji", "arcade", "leaderboard", "fun"],
     primaryColor: "#FF6B6B",
+    assetBundlePatterns: [
+      "**/*"
+    ],
     splash: {
       image: "./assets/splash-icon.png",
       resizeMode: "contain",
@@ -27,16 +30,22 @@ export default {
     android: {
       package: process.env.EXPO_PUBLIC_BUNDLE_ID || "com.yourcompany.smackamoji",
       versionCode: 1,
+      icon: "./assets/icon.png",
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#FFE4E1"
       },
+      compileSdkVersion: 34,
+      targetSdkVersion: 34,
+      minSdkVersion: 21,
       edgeToEdgeEnabled: true,
       permissions: [
         "INTERNET",
-        "ACCESS_NETWORK_STATE"
+        "ACCESS_NETWORK_STATE",
+        "VIBRATE"
       ],
-      jsEngine: "hermes" // Enable Hermes for better performance
+      jsEngine: "hermes", // Enable Hermes for better performance
+      allowBackup: false
     },
     web: {
       favicon: "./assets/favicon.png",
@@ -49,12 +58,26 @@ export default {
       display: "standalone"
     },
     plugins: [
-      "expo-font",
-      "expo-audio"
+      [
+        "expo-font",
+        {
+          fonts: [
+            "./assets/fonts/Poppins-Regular.ttf",
+            "./assets/fonts/Poppins-Bold.ttf"
+          ]
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          supportsBackgroundAudio: false,
+          enableLegacyAudioSupport: true
+        }
+      ]
     ],
     extra: {
       eas: {
-        projectId: process.env.EXPO_PUBLIC_EAS_PROJECT_ID || "your-eas-project-id-here"
+        projectId: "cfc98f1d-7180-475a-b9f3-43ec7a2b1545"
       },
       // Game configuration
       gameConfig: {

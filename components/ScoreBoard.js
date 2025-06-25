@@ -64,12 +64,12 @@ const styles = StyleSheet.create({
   },
   scoreLabel: {
     fontSize: 20,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#333',
   },
   score: {
     fontSize: 24,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
     color: '#FF6B6B',
     fontWeight: 'bold',
   },

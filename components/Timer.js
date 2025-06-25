@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   timer: {
     fontSize: 22,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
     fontWeight: 'bold',
   },
 }); 

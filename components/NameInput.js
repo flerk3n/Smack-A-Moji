@@ -116,14 +116,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
     color: '#FF6B6B',
     marginBottom: 8,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 16,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#666',
     marginBottom: 30,
     textAlign: 'center',
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     paddingHorizontal: 20,
     fontSize: 18,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     backgroundColor: '#FFF',
     textAlign: 'center',
     color: '#333',
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
   charCount: {
     alignSelf: 'flex-end',
     fontSize: 12,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#999',
     marginTop: 5,
     marginBottom: 20,
@@ -170,7 +171,8 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: 'white',
     fontSize: 18,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   skipButton: {
@@ -181,7 +183,7 @@ const styles = StyleSheet.create({
   skipButtonText: {
     color: '#999',
     fontSize: 16,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     textAlign: 'center',
     textDecorationLine: 'underline',
   },
@@ -193,13 +195,14 @@ const styles = StyleSheet.create({
   },
   tipsTitle: {
     fontSize: 16,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
     color: '#FF6B6B',
     marginBottom: 10,
   },
   tip: {
     fontSize: 14,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#666',
     marginBottom: 5,
     lineHeight: 20,

@@ -4,7 +4,7 @@
     "slug": "smack-a-moji",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./new.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "description": "The ultimate whack-a-mole game with animated emojis! Test your reflexes and compete on global leaderboards.",
@@ -27,14 +27,19 @@
     "android": {
       "package": "com.yourcompany.smackamoji",
       "versionCode": 1,
+      "icon": "./assets/icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFE4E1"
       },
+      "compileSdkVersion": 34,
+      "targetSdkVersion": 34,
+      "minSdkVersion": 21,
       "edgeToEdgeEnabled": true,
       "permissions": [
         "INTERNET",
-        "ACCESS_NETWORK_STATE"
+        "ACCESS_NETWORK_STATE",
+        "VIBRATE"
       ]
     },
     "web": {
@@ -53,7 +58,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "your-eas-project-id-here"
+        "projectId": "cfc98f1d-7180-475a-b9f3-43ec7a2b1545"
       }
     }
   }

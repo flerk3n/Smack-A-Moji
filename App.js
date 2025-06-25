@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Alert, Platform } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useAudioPlayer } from 'expo-audio';
 import MoleHole from './components/MoleHole';
@@ -7,6 +7,7 @@ import ScoreBoard from './components/ScoreBoard';
 import Timer from './components/Timer';
 import NameInput from './components/NameInput';
 import CloudLeaderboard from './components/CloudLeaderboard';
+import WebHomePage from './components/WebHomePage';
 import { savePlayerName, getPlayerName, saveLocalScore } from './utils/storage';
 import { saveScoreToCloud, checkFirebaseConnection } from './utils/firebaseStorage';
 
@@ -24,16 +25,24 @@ export default function App() {
   const [showNameInput, setShowNameInput] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [showHomePage, setShowHomePage] = useState(Platform.OS === 'web');
   
   // Refs to track current values for timer callbacks
   const gameTimeRef = useRef(30);
   const scoreRef = useRef(0);
   
-  // Initialize audio players
-  const backgroundPlayer = useAudioPlayer(require('./assets/sounds/background.mp3'));
-  const hitSoundPlayer = useAudioPlayer(require('./assets/sounds/mole_pop.mp3'));
+  // Initialize audio players with error handling
+  let backgroundPlayer, hitSoundPlayer;
+  try {
+    backgroundPlayer = useAudioPlayer(require('./assets/sounds/background.mp3'));
+    hitSoundPlayer = useAudioPlayer(require('./assets/sounds/mole_pop.mp3'));
+  } catch (error) {
+    console.log('Audio initialization failed:', error);
+    backgroundPlayer = null;
+    hitSoundPlayer = null;
+  }
 
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
     'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
     'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
   });
@@ -66,10 +75,11 @@ export default function App() {
       }
     };
 
-    if (fontsLoaded) {
+    // Initialize even if fonts fail to load (fallback to system fonts)
+    if (fontsLoaded || fontError) {
       initializeApp();
     }
-  }, [fontsLoaded]);
+  }, [fontsLoaded, fontError]);
 
   // Configure background music
   useEffect(() => {
@@ -394,8 +404,26 @@ export default function App() {
     setShowNameInput(true);
   };
 
-  if (!fontsLoaded || !isInitialized) {
-    return null;
+  const handlePlayOnline = () => {
+    setShowHomePage(false);
+  };
+
+  if (!isInitialized || (!fontsLoaded && !fontError)) {
+    return (
+      <SafeAreaView style={[styles.container, { justifyContent: 'center' }]}>
+        <Text style={[styles.title]}>
+          🎉 Smack-a-Moji 🎉
+        </Text>
+        <Text style={[styles.startButtonText, { color: '#FF6B6B' }]}>
+          Loading...
+        </Text>
+      </SafeAreaView>
+    );
+  }
+
+  // Show home page on web platform
+  if (showHomePage && Platform.OS === 'web') {
+    return <WebHomePage onPlayOnline={handlePlayOnline} />;
   }
 
   // Show name input screen if no player name is set
@@ -455,6 +483,15 @@ export default function App() {
           >
             <Text style={styles.leaderboardButtonText}>🏆 View Leaderboard</Text>
           </TouchableOpacity>
+
+          {Platform.OS === 'web' && (
+            <TouchableOpacity 
+              style={styles.homeButton}
+              onPress={() => setShowHomePage(true)}
+            >
+              <Text style={styles.homeButtonText}>🏠 Back to Home</Text>
+            </TouchableOpacity>
+          )}
         </View>
       )}
       
@@ -501,12 +538,13 @@ const styles = StyleSheet.create({
   },
   nameButtonText: {
     fontSize: 14,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#FF6B6B',
   },
   title: {
     fontSize: 32,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    fontWeight: 'bold',
     marginBottom: 10,
     color: '#FF6B6B',
     textShadowColor: 'rgba(0, 0, 0, 0.1)',
@@ -543,7 +581,7 @@ const styles = StyleSheet.create({
   startButtonText: {
     color: 'white',
     fontSize: 18,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
     textAlign: 'center',
   },
   leaderboardButton: {
@@ -560,7 +598,25 @@ const styles = StyleSheet.create({
   leaderboardButtonText: {
     color: 'white',
     fontSize: 16,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'System',
+    textAlign: 'center',
+  },
+  homeButton: {
+    backgroundColor: '#95A5A6',
+    paddingHorizontal: 25,
+    paddingVertical: 12,
+    borderRadius: 20,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    marginTop: 10,
+  },
+  homeButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontFamily: 'System',
     textAlign: 'center',
   },
   speedIndicator: {
@@ -572,7 +628,7 @@ const styles = StyleSheet.create({
   },
   speedText: {
     fontSize: 14,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'System',
     color: '#FF6B6B',
   },
 }); 

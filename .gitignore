@@ -40,3 +40,35 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# iOS
+ios/build/
+ios/DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+
+# Android
+android/app/build/
+android/build/
+android/.gradle/
+*.apk
+*.aab
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE files
+.idea/
+*.swp
+*.swo
+
+# Firebase config (if sensitive)
+# firebase-config.js
