@@ -20,7 +20,7 @@ const WebHomePage = ({ onPlayOnline }) => {
   const handleDownloadAndroid = () => {
     // This will be the download link for the Android APK
     // You can replace this URL with your actual APK download link
-    const downloadUrl = 'https://expo.dev/accounts/flerk3n/projects/smack-a-moji/builds/d0e1a939-36af-4555-a75a-e8f5756f0361';
+    const downloadUrl = 'https://expo.dev/accounts/flerk3n/projects/smack-a-moji/builds/e1191df4-6141-4055-8702-83322a4c924c';
     window.open(downloadUrl, '_blank');
   };
 
