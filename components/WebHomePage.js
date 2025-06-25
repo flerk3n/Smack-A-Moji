@@ -20,7 +20,7 @@ const WebHomePage = ({ onPlayOnline }) => {
   const handleDownloadAndroid = () => {
     // This will be the download link for the Android APK
     // You can replace this URL with your actual APK download link
-    const downloadUrl = 'https://your-app-download-link.com/smack-a-moji.apk';
+    const downloadUrl = 'https://expo.dev/accounts/flerk3n/projects/smack-a-moji/builds/d0e1a939-36af-4555-a75a-e8f5756f0361';
     window.open(downloadUrl, '_blank');
   };
 
